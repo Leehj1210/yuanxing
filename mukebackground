@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能学习平台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#4f46e5'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '2px',
+                        DEFAULT: '4px',
+                        'md': '8px',
+                        'lg': '12px',
+                        'xl': '16px',
+                        '2xl': '20px',
+                        '3xl': '24px',
+                        'full': '9999px',
+                        'button': '4px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            min-height: 1024px;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-section {
+            background-image: url('https://ai-public.mastergo.com/ai/img_res/a093af038d18d1c3febd744eddf4f9f4.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+                    <nav class="ml-10">
+                        <ul class="flex space-x-8">
+                            <li><a href="#" class="text-gray-700 hover:text-primary">课程分类</a></li>
+                            <li><a href="#" class="text-gray-700 hover:text-primary">学习路径</a></li>
+                            <li><a href="#" class="text-gray-700 hover:text-primary">AI 助手</a></li>
+                            <li><a href="#" class="text-gray-700 hover:text-primary">互动社区</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="relative">
+                        <input type="text" placeholder="搜索课程" class="w-64 h-9 pl-10 pr-4 text-sm bg-gray-100 border-none !rounded-button">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                    <button class="px-6 py-2 text-sm text-white bg-primary hover:bg-secondary transition-colors !rounded-button whitespace-nowrap">登录 / 注册</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section class="hero-section relative">
+            <div class="max-w-7xl mx-auto px-4 py-20">
+                <div class="w-1/2">
+                    <h1 class="text-5xl font-bold text-white mb-6">AI 赋能学习<br>让知识触手可及</h1>
+                    <p class="text-lg text-gray-100 mb-8">借助 AI 技术，为每位学习者打造个性化学习体验，让学习更高效、更有趣</p>
+                    <button class="px-8 py-3 text-white bg-primary hover:bg-secondary transition-colors !rounded-button whitespace-nowrap">开始学习</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">AI 智能学习特色</h2>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="p-8 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                            <i class="fas fa-robot text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">AI 智能助手</h3>
+                        <p class="text-gray-600">24 小时在线解答学习疑问，提供即时帮助和指导</p>
+                    </div>
+                    <div class="p-8 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                            <i class="fas fa-brain text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">个性化学习路径</h3>
+                        <p class="text-gray-600">基于 AI 分析，为你量身定制最优学习计划</p>
+                    </div>
+                    <div class="p-8 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-lg">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                            <i class="fas fa-chart-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">学习效果追踪</h3>
+                        <p class="text-gray-600">实时监测学习进度，智能调整学习策略</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">热门课程推荐</h2>
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/0a2ff3dbbbe1ec78dc3e69eea35a671b.jpg" alt="课程封面" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-500">人工智能</span>
+                                <span class="text-sm text-primary">AI 匹配度 98%</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">深度学习实战：从入门到精通</h3>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/2955e8f8cf970b351e4fb2dbb7a7a539.jpg" alt="讲师头像" class="w-6 h-6 rounded-full mr-2">
+                                    <span class="text-sm text-gray-600">张教授</span>
+                                </div>
+                                <span class="text-sm text-gray-500">12,345 人在学</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/06f8c32c02e492857ec967d0d26a21f6.jpg" alt="课程封面" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-500">前端开发</span>
+                                <span class="text-sm text-primary">AI 匹配度 95%</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Vue3 + TypeScript 企业实战</h3>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/7d279d90dd345b5b194821eb235a3fe0.jpg" alt="讲师头像" class="w-6 h-6 rounded-full mr-2">
+                                    <span class="text-sm text-gray-600">李老师</span>
+                                </div>
+                                <span class="text-sm text-gray-500">8,762 人在学</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/07609f69ec662ea7879a61ddf985666f.jpg" alt="课程封面" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-500">云计算</span>
+                                <span class="text-sm text-primary">AI 匹配度 92%</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">云原生架构师进阶之路</h3>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/8a716150af29281393e46f5040380ad5.jpg" alt="讲师头像" class="w-6 h-6 rounded-full mr-2">
+                                    <span class="text-sm text-gray-600">王工程师</span>
+                                </div>
+                                <span class="text-sm text-gray-500">6,543 人在学</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://ai-public.mastergo.com/ai/img_res/e28611028ccf816dc1b70b4978d1a179.jpg" alt="课程封面" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-gray-500">数据科学</span>
+                                <span class="text-sm text-primary">AI 匹配度 90%</span>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Python 数据分析实战</h3>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/65dfe1fac76de5538f44089a1996dcb9.jpg" alt="讲师头像" class="w-6 h-6 rounded-full mr-2">
+                                    <span class="text-sm text-gray-600">刘博士</span>
+                                </div>
+                                <span class="text-sm text-gray-500">9,876 人在学</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">AI 学习路径</h2>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <div id="learningPath" class="w-full h-[400px]"></div>
+                        <script>
+                            const chart = echarts.init(document.getElementById('learningPath'));
+                            const option = {
+                                animation: false,
+                                tooltip: {
+                                    trigger: 'item',
+                                    formatter: '{b}: {c}'
+                                },
+                                series: [
+                                    {
+                                        type: 'graph',
+                                        layout: 'force',
+                                        data: [
+                                            {name: 'Python 基础', value: 100, symbolSize: 50},
+                                            {name: '数据结构', value: 80, symbolSize: 40},
+                                            {name: '算法基础', value: 80, symbolSize: 40},
+                                            {name: '机器学习', value: 90, symbolSize: 45},
+                                            {name: '深度学习', value: 100, symbolSize: 50}
+                                        ],
+                                        links: [
+                                            {source: 'Python 基础', target: '数据结构'},
+                                            {source: 'Python 基础', target: '算法基础'},
+                                            {source: '数据结构', target: '机器学习'},
+                                            {source: '算法基础', target: '机器学习'},
+                                            {source: '机器学习', target: '深度学习'}
+                                        ],
+                                        categories: [
+                                            {name: '基础'},
+                                            {name: '进阶'},
+                                            {name: '高级'}
+                                        ],
+                                        roam: true,
+                                        label: {
+                                            show: true,
+                                            position: 'right',
+                                            formatter: '{b}'
+                                        },
+                                        force: {
+                                            repulsion: 100
+                                        }
+                                    }
+                                ]
+                            };
+                            chart.setOption(option);
+                        </script>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="p-6 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-lg">
+                            <h3 class="text-xl font-semibold mb-4">AI 个性化学习建议</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium mb-1">基础夯实阶段</h4>
+                                        <p class="text-gray-600">建议每天投入 2-3 小时学习 Python 基础知识，完成配套练习</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium mb-1">进阶提升阶段</h4>
+                                        <p class="text-gray-600">通过实战项目巩固数据结构与算法知识，建议完成 3-5 个项目</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-primary mt-1 mr-3"></i>
+                                    <div>
+                                        <h4 class="font-medium mb-1">专业方向阶段</h4>
+                                        <p class="text-gray-600">深入学习机器学习理论与实践，推荐参加在线研讨会</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="p-6 bg-white rounded-lg shadow-sm">
+                            <h3 class="text-xl font-semibold mb-4">学习进度追踪</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm text-gray-600">Python 基础</span>
+                                        <span class="text-sm text-primary">90%</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-200 rounded-full">
+                                        <div class="h-2 bg-primary rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm text-gray-600">数据结构</span>
+                                        <span class="text-sm text-primary">75%</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-200 rounded-full">
+                                        <div class="h-2 bg-primary rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-sm text-gray-600">算法基础</span>
+                                        <span class="text-sm text-primary">60%</span>
+                                    </div>
+                                    <div class="h-2 bg-gray-200 rounded-full">
+                                        <div class="h-2 bg-primary rounded-full" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12">学习社区</h2>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-semibold">热门问答</h3>
+                            <a href="#" class="text-primary hover:text-secondary">查看更多</a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-start space-x-3">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/7b37094f082adb0798a5f6ff8bd5997e.jpg" alt="用户头像" class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <h4 class="font-medium mb-2">Vue3 组合式 API 使用疑问</h4>
+                                        <p class="text-sm text-gray-600 mb-2">在使用 setup 语法糖时遇到了响应式数据更新的问题...</p>
+                                        <div class="flex items-center space-x-4">
+                                            <span class="text-xs text-gray-500">10 分钟前</span>
+                                            <span class="text-xs text-gray-500">5 回答</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-start space-x-3">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/760ef07b88c86d1b4d6c8156b1f681e9.jpg" alt="用户头像" class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <h4 class="font-medium mb-2">TensorFlow 模型部署问题</h4>
+                                        <p class="text-sm text-gray-600 mb-2">模型在本地训练正常，但部署到服务器后性能下降...</p>
+                                        <div class="flex items-center space-x-4">
+                                            <span class="text-xs text-gray-500">30 分钟前</span>
+                                            <span class="text-xs text-gray-500">8 回答</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-semibold">AI 助手解答</h3>
+                            <button class="text-primary hover:text-secondary">发起提问</button>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                                    <i class="fas fa-robot text-primary"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="bg-gray-50 rounded-lg p-4">
+                                        <p class="text-sm text-gray-600">在 Vue3 中，setup 语法糖确实需要注意几个关键点：</p>
+                                        <ol class="mt-2 space-y-2 text-sm text-gray-600">
+                                            <li>1. 确保响应式数据使用 ref 或 reactive 声明</li>
+                                            <li>2. 在模板中访问 ref 数据无需 .value</li>
+                                            <li>3. watch 和 computed 的使用方式...</li>
+                                        </ol>
+                                    </div>
+                                    <div class="mt-2 flex items-center space-x-4">
+                                        <button class="text-xs text-gray-500 hover:text-primary">有帮助</button>
+                                        <button class="text-xs text-gray-500 hover:text-primary">继续提问</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-xl font-semibold">学习笔记</h3>
+                            <a href="#" class="text-primary hover:text-secondary">写笔记</a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <div class="flex items-start space-x-3">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/b655e2737c56a88fc9870923474f58be.jpg" alt="用户头像" class="w-8 h-8 rounded-full">
+                                    <div>
+                                        <h4 class="font-medium mb-2">深度学习模型优化技巧总结</h4>
+                                        <p class="text-sm text-gray-600 mb-2">整理了常用的模型优化方法，包括数据预处理、参数调优...</p>
+                                        <div class="flex items-center space-x-4">
+                                            <span class="text-xs text-gray-500">2 小时前</span>
+                                            <span class="text-xs text-gray-500">128 赞</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="text-2xl font-['Pacifico'] text-white mb-6 block">logo</a>
+                    <p class="text-sm">让 AI 为每个人的学习之路保驾护航</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">关于我们</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm hover:text-white">公司介绍</a></li>
+                        <li><a href="#" class="text-sm hover:text-white">加入我们</a></li>
+                        <li><a href="#" class="text-sm hover:text-white">联系我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">帮助中心</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-sm hover:text-white">常见问题</a></li>
+                        <li><a href="#" class="text-sm hover:text-white">学习指南</a></li>
+                        <li><a href="#" class="text-sm hover:text-white">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-medium mb-4">关注我们</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-weixin text-white"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-weibo text-white"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-sm text-center">
+                <p>© 2024 AI 智能学习平台. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 space-y-4">
+        <button class="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+            <i class="fas fa-robot"></i>
+        </button>
+        <button class="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition- 
+
+<header class="bg-white shadow-sm">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
+    <div class="w-full py-4 flex items-center justify-between">
+      <div class="flex items-center">
+        <a href="#">
+          <span class="sr-only">AI学院</span>
+          <img class="h-10" src="/images/logo.svg" alt="logo">
+        </a>
+        <div class="hidden ml-10 space-x-8 lg:block">
+          <a href="#" class="text-base font-medium text-gray-600 hover:text-gray-900">课程分类</a>
+          <a href="#" class="text-base font-medium text-gray-600 hover:text-gray-900">学习路径</a>
+          <a href="#" class="text-base font-medium text-gray-600 hover:text-gray-900">AI助手</a>
+          <a href="#" class="text-base font-medium text-gray-600 hover:text-gray-900">社区</a>
+        </div>
+      </div>
+      <div class="ml-10 space-x-4 flex items-center">
+        <div class="flex-1 min-w-0">
+          <div class="relative rounded-md shadow-sm">
+            <input type="search" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600 sm:text-sm" placeholder="搜索课程...">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
+          登录
+        </button>
+        <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50">
+          注册
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="bg-gradient-to-r from-purple-900 via-indigo-800 to-blue-900 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+          <span class="block">AI赋能学习</span>
+          <span class="block text-indigo-400">智慧助力成长</span>
+        </h1>
+        <p class="mt-3 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+          使用AI助手定制专属学习计划，智能推荐优质课程，解答学习疑惑，让学习更高效
+        </p>
+        <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+          <div class="rounded-md shadow">
+            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+              开始学习
+            </a>
+          </div>
+          <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+            <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10">
+              体验AI助手
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+    <div class="absolute inset-0">
+      <div class="bg-white h-1/3 sm:h-2/3"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto">
+      <div class="text-center">
+        <h2 class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">热门课程</h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+          AI精选优质课程，助你快速掌握核心技能
+        </p>
+      </div>
+      
+      <div class="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
+        <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
+          <div class="flex-shrink-0">
+            <img class="h-48 w-full object-cover" src="/images/course-1.jpg" alt="">
+          </div>
+          <div class="flex-1 bg-white p-6 flex flex-col justify-between">
+            <div class="flex-1">
+              <p class="text-sm font-medium text-indigo-600">
+                <a href="#" class="hover:underline">人工智能</a>
+              </p>
+              <a href="#" class="block mt-2">
+                <p class="text-xl font-semibold text-gray-900">深度学习入门与实战</p>
+                <p class="mt-3 text-base text-gray-500">从零开始学习深度学习的核心概念与实践应用</p>
+              </a>
+            </div>
+            <div class="mt-6 flex items-center">
+              <div class="flex-shrink-0">
+                <img class="h-10 w-10 rounded-full" src="/images/teacher-1.jpg" alt="">
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900">张教授</p>
+                <div class="flex space-x-1 text-sm text-gray-500">
+                  <span>4.9分</span>
+                  <span aria-hidden="true">&middot;</span>
+                  <span>12,234人学习</span>
+                </div>
+              </div>
+              <div class="ml-auto flex items-center space-x-1 text-green-600">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+                <span>AI推荐度 98%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 更多课程卡片 -->
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">AI学习路径</h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+          智能规划学习路线，阶梯式提升能力
+        </p>
+      </div>
+      
+      <div class="mt-12 bg-white rounded-lg shadow px-5 py-6 sm:px-6">
+        <!-- 学习路径内容 -->
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gray-50">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">学习社区</h2>
+        <p class="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
+          在这里交流学习心得，分享成长经验
+        </p>
+      </div>
+      
+      <div class="mt-12">
+        <!-- 社区内容 -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-gray-800">
+  <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      <div>
+        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">关于我们</h3>
+        <ul role="list" class="mt-4 space-y-4">
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">公司介绍</a>
+          </li>
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">加入我们</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">帮助中心</h3>
+        <ul role="list" class="mt-4 space-y-4">
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">学习指南</a>
+          </li>
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">常见问题</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">联系我们</h3>
+        <ul role="list" class="mt-4 space-y-4">
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">联系方式</a>
+          </li>
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">商务合作</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">关注我们</h3>
+        <ul role="list" class="mt-4 space-y-4">
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">微信公众号</a>
+          </li>
+          <li>
+            <a href="#" class="text-base text-gray-300 hover:text-white">新浪微博</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+      <div class="flex space-x-6 md:order-2">
+        <a href="#" class="text-gray-400 hover:text-gray-300">
+          <span class="sr-only">微信</span>
+          <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">&copy; 2024 AI学院. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">
+  <button type="button" class="bg-indigo-600 p-3 rounded-full text-white shadow-lg hover:bg-indigo-700 focus:outline-none">
+    <span class="sr-only">AI助手</span>
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+    </svg>
+  </button>
+  
+  <button type="button" class="bg-gray-700 p-3 rounded-full text-white shadow-lg hover:bg-gray-800 focus:outline-none">
+    <span class="sr-only">返回顶部</span>
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+    </svg>
+  </button>
+</div><!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能学习平台</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#4f46e5'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '2px',
+                        DEFAULT: '4px',
+                        'md': '8px',
+                        'lg': '12px',
+                        'xl': '16px',
+                        '2xl': '20px',
+                        '3xl': '24px',
+                        'full': '9999px',
+                        'button': '4px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            min-height: 1024px;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #6366f1, #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="max-w-[1440px] mx-auto px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-12">
+                <a href="/" class="text-2xl font-['Pacifico'] text-primary">logo</a>
+                <nav class="flex items-center gap-8">
+                    <a href="#" class="text-gray-700 hover:text-primary">课程分类</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">学习路径</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">AI 助手</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">互动社区</a>
+                </nav>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="relative">
+                    <input type="text" placeholder="搜索课程" class="w-64 h-10 pl-10 pr-4 text-sm border border-gray-200 rounded-button focus:outline-none focus:border-primary">
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                </div>
+                <button class="px-6 py-2 text-sm text-white bg-primary hover:bg-secondary transition-colors !rounded-button whitespace-nowrap">登录 / 注册</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <section class="relative h-[600px] bg-gradient-to-r from-[#f0f1ff] to-[#e5e7ff] overflow-hidden">
+            <div class="max-w-[1440px] mx-auto px-8 h-full flex items-center">
+                <div class="w-1/2 pr-12">
+                    <h1 class="text-5xl font-bold mb-6">
+                        <span class="gradient-text">AI 赋能学习</span><br>
+                        让知识触手可及
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8">基于 AI 技术的智能学习平台，为你提供个性化学习路径，让学习更高效、更有趣</p>
+                    <button class="px-8 py-3 text-white bg-primary hover:bg-secondary transition-colors !rounded-button whitespace-nowrap">开始学习</button>
+                </div>
+                <div class="absolute right-0 top-0 w-1/2 h-full">
+                    <img src="https://ai-public.mastergo.com/ai/img_res/245c7981b48dc1e3db3af17906677daa.jpg" class="w-full h-full object-cover object-top" alt="Hero Image">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="max-w-[1440px] mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">AI 特色功能</h2>
+                <p class="text-gray-600 text-center mb-12">智能化学习体验，让你的学习更高效</p>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="p-8 bg-gradient-to-br from-[#f0f1ff] to-white rounded-lg">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6">
+                            <i class="fas fa-robot text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">AI 学习助手</h3>
+                        <p class="text-gray-600">24 小时在线解答你的学习疑问，提供即时帮助和指导</p>
+                    </div>
+                    <div class="p-8 bg-gradient-to-br from-[#f0f1ff] to-white rounded-lg">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6">
+                            <i class="fas fa-route text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">智能学习路径</h3>
+                        <p class="text-gray-600">基于你的学习目标和能力水平，智能规划最适合的学习路径</p>
+                    </div>
+                    <div class="p-8 bg-gradient-to-br from-[#f0f1ff] to-white rounded-lg">
+                        <div class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6">
+                            <i class="fas fa-chart-line text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">学习进度分析</h3>
+                        <p class="text-gray-600">实时追踪学习进度，智能分析学习效果，提供改进建议</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-[1440px] mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">热门课程</h2>
+                <p class="text-gray-600 text-center mb-12">精选优质课程，助你快速成长</p>
+                <div class="grid grid-cols-4 gap-8">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/de451fcd8c9b4e40a51ad08665b390ae.jpg" class="w-full h-full object-cover" alt="Course Image">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 text-xs text-primary bg-primary bg-opacity-10 rounded-full">Python</span>
+                                <span class="px-2 py-1 text-xs text-green-600 bg-green-100 rounded-full">AI 推荐</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">Python 人工智能实战课程</h3>
+                            <p class="text-gray-600 text-sm mb-4">从零开始学习 Python AI 开发，掌握机器学习核心技能</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/f833b240bdca42c15c4ca4385931c832.jpg" class="w-8 h-8 rounded-full" alt="Instructor">
+                                    <span class="text-sm text-gray-600">张明远 教授</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm text-gray-500">
+                                    <i class="fas fa-user"></i>
+                                    <span>2,384 人学习</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/2dc075b45b984db874a20218d10cea3c.jpg" class="w-full h-full object-cover" alt="Course Image">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 text-xs text-primary bg-primary bg-opacity-10 rounded-full">数据分析</span>
+                                <span class="px-2 py-1 text-xs text-green-600 bg-green-100 rounded-full">热门</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">数据分析与可视化实战</h3>
+                            <p class="text-gray-600 text-sm mb-4">掌握数据分析核心技能，打造数据驱动决策能力</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/4ac47ec878c04ba60e4c466961e9970c.jpg" class="w-8 h-8 rounded-full" alt="Instructor">
+                                    <span class="text-sm text-gray-600">李雨晴 博士</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm text-gray-500">
+                                    <i class="fas fa-user"></i>
+                                    <span>1,892 人学习</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/1a5b4ba8ac8bfa3a75b79efe56e21088.jpg" class="w-full h-full object-cover" alt="Course Image">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 text-xs text-primary bg-primary bg-opacity-10 rounded-full">Web 开发</span>
+                                <span class="px-2 py-1 text-xs text-green-600 bg-green-100 rounded-full">新课</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">全栈工程师进阶课程</h3>
+                            <p class="text-gray-600 text-sm mb-4">从前端到后端，全面掌握 Web 开发技能</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/778ee07bc717a94e15404a3cbcfb455e.jpg" class="w-8 h-8 rounded-full" alt="Instructor">
+                                    <span class="text-sm text-gray-600">王子豪 讲师</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm text-gray-500">
+                                    <i class="fas fa-user"></i>
+                                    <span>1,456 人学习</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="https://ai-public.mastergo.com/ai/img_res/87607e53b27641f4c536a9608531838a.jpg" class="w-full h-full object-cover" alt="Course Image">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="px-2 py-1 text-xs text-primary bg-primary bg-opacity-10 rounded-full">云计算</span>
+                                <span class="px-2 py-1 text-xs text-green-600 bg-green-100 rounded-full">进阶</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2">云原生架构师养成</h3>
+                            <p class="text-gray-600 text-sm mb-4">深入学习云原生技术，打造高可用架构能力</p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/1ecc66aa6248b1620bbec0e6fc1f7b45.jpg" class="w-8 h-8 rounded-full" alt="Instructor">
+                                    <span class="text-sm text-gray-600">陈志强 架构师</span>
+                                </div>
+                                <div class="flex items-center gap-1 text-sm text-gray-500">
+                                    <i class="fas fa-user"></i>
+                                    <span>986 人学习</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="max-w-[1440px] mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">学习路径</h2>
+                <p class="text-gray-600 text-center mb-12">AI 智能规划，助你实现职业目标</p>
+                <div class="grid grid-cols-3 gap-8">
+                    <div class="p-8 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg">
+                                <i class="fas fa-code text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold">全栈开发工程师</h3>
+                                <p class="text-sm text-gray-500">预计学习时长：6 个月</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">HTML5 + CSS3 基础</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">JavaScript 进阶开发</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">Node.js 服务端开发</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">前端框架与工程化</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-2 text-primary border border-primary hover:bg-primary hover:text-white transition-colors !rounded-button whitespace-nowrap">查看详情</button>
+                    </div>
+                    <div class="p-8 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg">
+                                <i class="fas fa-brain text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold">AI 算法工程师</h3>
+                                <p class="text-sm text-gray-500">预计学习时长：8 个月</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">Python 编程基础</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">机器学习算法</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">深度学习框架</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">计算机视觉与 NLP</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-2 text-primary border border-primary hover:bg-primary hover:text-white transition-colors !rounded-button whitespace-nowrap">查看详情</button>
+                    </div>
+                    <div class="p-8 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg">
+                                <i class="fas fa-database text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold">大数据开发工程师</h3>
+                                <p class="text-sm text-gray-500">预计学习时长：7 个月</p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">Linux 系统基础</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">Hadoop 生态系统</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">Spark 数据处理</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                                <span class="text-gray-600">数据仓库设计</span>
+                            </div>
+                        </div>
+                        <button class="w-full py-2 text-primary border border-primary hover:bg-primary hover:text-white transition-colors !rounded-button whitespace-nowrap">查看详情</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-[1440px] mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">学习数据分析</h2>
+                <p class="text-gray-600 text-center mb-12">实时追踪你的学习进度和效果</p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-bold mb-6">学习时长分布</h3>
+                        <div id="studyTimeChart" class="w-full h-[300px]"></div>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm">
+                        <h3 class="text-lg font-bold mb-6">知识点掌握度</h3>
+                        <div id="knowledgeChart" class="w-full h-[300px]"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="max-w-[1440px] mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center mb-4">学习社区</h2>
+                <p class="text-gray-600 text-center mb-12">和同学一起交流学习心得</p>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-bold">热门问答</h3>
+                            <a href="#" class="text-primary hover:text-secondary">查看更多</a>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg">
+                                <div class="flex items-start gap-4">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/ed21820ea484e38eacb35b130426636c.jpg" class="w-10 h-10 rounded-full" alt="User">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-bold">赵思琪</span>
+                                            <span class="text-sm text-gray-500">2 小时前</span>
+                                        </div>
+                                        <p class="text-gray-700 mb-4">Python 中如何高效处理大规模数据？有什么好的库或框架推荐吗？</p>
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-gray-500">3 个回答</span>
+                                            <button class="text-sm text-primary">查看详情</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg">
+                                <div class="flex items-start gap-4">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/e5a4a5f6e3255d8b7eede5a2eeebb1b4.jpg" class="w-10 h-10 rounded-full" alt="User">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-bold">林志远</span>
+                                            <span class="text-sm text-gray-500">4 小时前</span>
+                                        </div>
+                                        <p class="text-gray-700 mb-4">React Hooks 和传统的 Class 组件相比，有什么优势？</p>
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-gray-500">5 个回答</span>
+                                            <button class="text-sm text-primary">查看详情</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-lg font-bold">学习笔记</h3>
+                            <a href="#" class="text-primary hover:text-secondary">查看更多</a>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-white p-6 rounded-lg">
+                                <div class="flex items-start gap-4">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/0e1847af80cdd2e25eedb6ef7f08813f.jpg" class="w-10 h-10 rounded-full" alt="User">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-bold">陈美琪</span>
+                                            <span class="text-sm text-gray-500">1 天前</span>
+                                        </div>
+                                        <h4 class="font-bold mb-2">深入理解 JavaScript 闭包</h4>
+                                        <p class="text-gray-700 mb-4">总结了闭包的概念、使用场景和注意事项，对性能优化也有一些思考...</p>
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-gray-500">
+                                                <i class="far fa-heart"></i>
+                                                28
+                                            </span>
+                                            <span class="text-sm text-gray-500">
+                                                <i class="far fa-comment"></i>
+                                                12
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg">
+                                <div class="flex items-start gap-4">
+                                    <img src="https://ai-public.mastergo.com/ai/img_res/f49547251cafe3d2f6b92ba0d0fcb567.jpg" class="w-10 h-10 rounded-full" alt="User">
+                                    <div class="flex-1">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="font-bold">张文浩</span>
+                                            <span class="text-sm text-gray-500">2 天前</span>
+                                        </div>
+                                        <h4 class="font-bold mb-2">Docker 容器化实践总结</h4>
+                                        <p class="text-gray-700 mb-4">分享了在项目中使用 Docker 的经验，包括常用命令、最佳实践...</p>
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-gray-500">
+                                                <i class=" <!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能学习平台</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <nav class="bg-white border-b shadow-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <img class="h-8 w-auto" src="/logo.svg" alt="AI学堂">
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-blue-600">课程分类</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600">学习路径</a>
+                    <div class="relative">
+                        <button class="flex items-center space-x-1 text-white px-4 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            <span>AI助手</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input type="text" placeholder="搜索课程..." class="w-64 pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <button class="text-gray-600 hover:text-blue-600">登录</button>
+                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">注册</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- AI特色板块 -->
+    <div class="mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-2xl p-8 text-white mb-8">
+            <div class="flex items-center justify-between">
+                <div class="space-y-4">
+                    <h2 class="text-3xl font-bold">AI智能助手</h2>
+                    <p class="text-blue-100">专属你的学习管家，24小时在线解答疑问</p>
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-50">
+                        立即体验
+                    </button>
+                </div>
+                <img src="/ai-assistant.svg" alt="AI助手" class="w-48 h-48">
+            </div>
+        </div>
+
+        <!-- AI学习路径推荐 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-medium">快速入门</h3>
+                </div>
+                <p class="text-gray-600 mb-4">AI智能分析你的基础水平，定制专属学习计划</p>
+                <button class="text-blue-600 hover:text-blue-700 flex items-center">
+                    开始学习
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- 其他两个类似的卡片 -->
+        </div>
+    </div>
+    <!-- 课程展示区域 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold">热门课程</h2>
+            <a href="#" class="text-blue-600 hover:text-blue-700">查看全部</a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- 课程卡片 -->
+            <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+                <img src="/course-1.jpg" alt="课程封面" class="w-full h-40 object-cover">
+                <div class="p-4">
+                    <div class="flex items-center space-x-2 mb-1">
+                        <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded">AI推荐</span>
+                        <span class="text-green-600 text-sm">匹配度 95%</span>
+                    </div>
+                    <h3 class="font-medium mb-2">Python人工智能实战</h3>
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <img src="/avatar.jpg" alt="讲师" class="w-6 h-6 rounded-full mr-2">
+                        <span>张教授</span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-gray-500 text-sm">12,345人在学</span>
+                        <span class="text-blue-600 font-medium">￥299</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 更多课程卡片 -->
+        </div>
+    </div>
+
+    <!-- 学习路径 -->
+    <div class="bg-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold mb-8">职业学习路径</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-lg">全栈工程师</h3>
+                            <p class="text-gray-500">预计学习时长：6个月</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                            <div class="h-px flex-1 bg-blue-200 mx-2"></div>
+                            <span class="text-sm text-gray-600">HTML/CSS基础</span>
+                        </div>
+                        <!-- 更多路径节点 -->
+                    </div>
+                </div>
+                <!-- 更多职业路径 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 互动社区 -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-bold">学习社区</h2>
+            <button class="flex items-center space-x-2 text-blue-600 hover:text-blue-700">
+                <span>发布问题</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="col-span-2 space-y-6">
+                <!-- 问答卡片 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center space-x-3">
+                            <img src="/user-avatar.jpg" alt="用户头像" class="w-10 h-10 rounded-full">
+                            <div>
+                                <h4 class="font-medium">李同学</h4>
+                                <span class="text-sm text-gray-500">2小时前</span>
+                            </div>
+                        </div>
+                        <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-sm">已解决</span>
+                    </div>
+                    <h3 class="text-lg font-medium mb-2">Python中如何使用装饰器？</h3>
+                    <p class="text-gray-600 mb-4">我在学习Python装饰器时遇到了一些问题，希望能得到详细解答...</p>
+                    <div class="flex items-center space-x-4 text-sm text-gray-500">
+                        <span>3个回答</span>
+                        <span>108次浏览</span>
+                    </div>
+                </div>
+                <!-- 更多问答卡片 -->
+            </div>
+
+            <!-- 右侧边栏 -->
+            <div class="space-y-6">
+                <!-- AI助手卡片 -->
+                <div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl p-6 text-white">
+                    <h3 class="text-lg font-medium mb-2">AI学习助手</h3>
+                    <p class="text-purple-100 mb-4">有任何学习问题，随时问我</p>
+                    <button class="bg-white text-purple-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-50">
+                        开始对话
+                    </button>
+                </div>
+
+                <!-- 热门话题 -->
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="font-medium mb-4">热门话题</h3>
+                    <div class="space-y-3">
+                        <a href="#" class="block text-gray-600 hover:text-blue-600">#Python进阶技巧</a>
+                        <a href="#" class="block text-gray-600 hover:text-blue-600">#前端面试题</a>
+                        <a href="#" class="block text-gray-600 hover:text-blue-600">#AI算法实战</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="bg-gray-800 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="/logo-white.svg" alt="Logo" class="h-8 mb-4">
+                    <p class="text-sm text-gray-400">
+                        让学习更简单，让成长更快乐
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">关于我们</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">公司介绍</a></li>
+                        <li><a href="#" class="hover:text-white">加入我们</a></li>
+                        <li><a href="#" class="hover:text-white">联系方式</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">帮助中心</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">常见问题</a></li>
+                        <li><a href="#" class="hover:text-white">学习指南</a></li>
+                        <li><a href="#" class="hover:text-white">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">关注我们</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                            </svg>
+                        </a>
+                        <a href="#" class="hover:text-white">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-sm text-gray-400">
+                <p>© 2024 AI智能学习平台. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 悬浮按钮 -->
+    <div class="fixed right-6 bottom-6 space-y-4">
+        <button class="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 border border-gray-200">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+        </button>
+        <button class="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 border border-gray-200">
+            <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11l7-7 7 7M5 19l7-7 7 7" />
+            </svg>
+        </button>
+    </div>
+</body>
+</html>
